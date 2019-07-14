@@ -23,10 +23,15 @@ div{
     text-align: center;
 }
 #questionandanswers {
-    display: block;
+    display: none;
 }
 #images {
     display: none;
+}
+#start {
+    display: block;
+    background-color: wheat;
+    margin-left: 40%;
 }
 #question{
     font-size: 32px;

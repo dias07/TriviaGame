@@ -24,51 +24,47 @@ $( document ).ready(function() {
     var Qincrease = 0;
     
 
-
+// beginning of all the time functions
     function run() {
         time = 31;
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
-      }
+    }
 
 
-      function decrement() {
+    function decrement() {
         time--;
         $("#Time").html("Time Remaining:" + time + "Seconds");
         if (time === 0) {
             for (var j=0; j<buttoncick1.length; j++)  {
                 if (jQuery.inArray(buttoncick1[j],allAnswers)>=0){
-                    $("#correctAnswer").html("The Correct Answer was:" + buttoncick1[j])}
+                    $("#correctAnswer").html("Out of Time!</br>"+"The Correct Answer was:" + buttoncick1[j])
                     $("#questionandanswers").hide();
                     $("#images").show();
                     $("#loadimage").prepend(myImage);  
-                    stop();
-                }
+                    stop();}
+            }
         }
       }
-      function stop() {
-
-        //  Clears our intervalId
-        //  We just pass the name of the interval
-        //  to the clearInterval function.
+    function stop() {
         clearInterval(intervalId);
-      }
-  
-      //  Execute the run function.
-      run();
-      increase ();
-
+    }
+  /////////////////////////////////////
+      
+     
+    // preparing the basic settings
     function increase (){
         $("#question").html(allQuestions[Qincrease]);
         Qincrease ++;
         if (Qincrease == 4){
             Qincrease=0;
-        }
-        
+            $("#questionandanswers").hide();
+            $("#images").hide();
+            $("#start").show();
+            $("#start").text("Start Over?")
+        }    
     }
-       
 
-    
     function setquestions (ProbableQuestions){
         for (var i=0; i<ProbableQuestions.length;i++){
             if (document.getElementById("question").innerHTML==ProbableQuestions[i])
@@ -87,9 +83,9 @@ $( document ).ready(function() {
            }
         }
     }
-    setquestions (allQuestions);
+    /////////////////////////////////
 
-
+    //preparing all the buttons
     $('.allbuttons').on('click', function(event){
        if (jQuery.inArray(event.target.value, allAnswers )>=0){
            $("#questionandanswers").hide();
@@ -101,27 +97,35 @@ $( document ).ready(function() {
        else {
            for (var j=0; j<buttoncick1.length; j++)  {
             if (jQuery.inArray(buttoncick1[j],allAnswers)>=0){
-                $("#correctAnswer").html("The Correct Answer was:" + buttoncick1[j])}
+                $("#correctAnswer").html("NOPE!</br>" + "The Correct Answer was:" + buttoncick1[j])}
                 $("#questionandanswers").hide();
                 $("#images").show();
-                $("#loadimage").prepend(myImage);  
+                $("#loadimage").html(myImage);  
                 stop();
             }
-       }
-       
-          
-        
+       }    
     })
+
     $("#loadimage").on('click', function(){
         $("#questionandanswers").show();
         $("#images").hide();
         run();
         increase ();
         setquestions (allQuestions);
+        $("#correctAnswer").html("");
     })
     
-    
-
+    $("#start").on('click', function(){
+        $("#questionandanswers").show();
+        $("#images").hide();
+        increase ();
+        run();
+        $("#start").hide();
+        setquestions (allQuestions);
+    })
+/* to add questions  store questions in allQuestions, 
+answer options needs to store in chAnswers as a new array, 
+and the correct answer  you have to store  in allAnswers*/
 
 
 
