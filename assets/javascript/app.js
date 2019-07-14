@@ -56,12 +56,13 @@ $( document ).ready(function() {
     function increase (){
         $("#question").html(allQuestions[Qincrease]);
         Qincrease ++;
-        if (Qincrease == allQuestions.length){
+        if (Qincrease == allQuestions.length+1){
             Qincrease=0;
             $("#questionandanswers").hide();
             $("#images").hide();
             $("#start").show();
-            $("#start").text("Start Over?")
+            $("#start").text("Start Over?");
+            stop() ;
         }    
     }
 
@@ -112,7 +113,7 @@ $( document ).ready(function() {
         run();
         increase ();
         setquestions (allQuestions);
-        $("#correctAnswer").html("");
+        $("#correctAnswer").empty();
     })
     
     $("#start").on('click', function(){
