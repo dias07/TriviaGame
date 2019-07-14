@@ -1,0 +1,41 @@
+body {
+    background-image: url("../images/bodyback.jpeg");
+}
+
+
+button {
+  border: 0;
+  background-color: yellow;
+  font-size: 32px;
+}
+#main {
+    background-color: yellow;
+    width: 500px;
+    height: 500px;
+margin: 15%;
+}
+header{
+    text-align: center;
+    font-size: 40px;
+    color: blue;
+}
+div{
+    text-align: center;
+}
+#questionandanswers {
+    display: none;
+}
+#images {
+    display: none;
+}
+#start {
+    display: block;
+    background-color: wheat;
+    margin-left: 40%;
+}
+#question{
+    font-size: 32px;
+}
+button:hover {
+border: 2px solid red;
+}

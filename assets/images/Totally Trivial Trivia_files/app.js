@@ -56,7 +56,7 @@ $( document ).ready(function() {
     function increase (){
         $("#question").html(allQuestions[Qincrease]);
         Qincrease ++;
-        if (Qincrease == allQuestions.length){
+        if (Qincrease == 4){
             Qincrease=0;
             $("#questionandanswers").hide();
             $("#images").hide();
